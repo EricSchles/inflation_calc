@@ -1,0 +1,1 @@
+    model = sm.tsa.ARIMA(interpolated_data, model_order).fit(disp=0)

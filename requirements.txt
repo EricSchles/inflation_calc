@@ -1,0 +1,9 @@
+argparse
+datapackage
+distribute
+wsgiref
+statsmodels
+scipy
+pandas
+requests
+editdistance
