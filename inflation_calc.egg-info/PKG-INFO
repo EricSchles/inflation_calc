@@ -1,10 +1,10 @@
 Metadata-Version: 1.1
-Name: economics
-Version: 0.1.2
+Name: inflation-calc
+Version: 0.1.1
 Summary: Functions and data manipulation for economics data
-Home-page: https://github.com/tryggvib/economics
-Author: Tryggvi Björgvinsson
-Author-email: tryggvi.bjorgvinsson@okfn.org
+Home-page: https://github.com/EricSchles/inflation_calc
+Author: Eric Schles
+Author-email: ericschles@gmail.com
 License: GPLv3
 Description: economics
         =========
@@ -76,7 +76,7 @@ Description: economics
         License
         -------
         
-        economics is available under the GNU General Public License, version 3.
+        inflation_calc is available under the GNU General Public License, version 3.
         See LICENCE for more details.
         
 Platform: UNKNOWN

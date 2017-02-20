@@ -68,5 +68,5 @@ Inflation
 License
 -------
 
-economics is available under the GNU General Public License, version 3.
+inflation_calc is available under the GNU General Public License, version 3.
 See LICENCE for more details.

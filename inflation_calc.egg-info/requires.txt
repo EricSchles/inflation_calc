@@ -1,5 +1,5 @@
-argparse
 datapackage
+argparse
 distribute
 statsmodels
 scipy

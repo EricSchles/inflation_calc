@@ -78,8 +78,9 @@ def dict_to_dataframe(data):
     df.sort_index(inplace=True)
     return df
 
-def predict(df,steps):
+def predict(data,steps):
     print("started function")
+    df = dict_to_dataframe(data)
     start = df.index[0].year
     end = df.index[-1].year
     years_captured = [idx.year for idx in df.index]
@@ -97,17 +98,5 @@ def predict(df,steps):
     print("found model order")
     model = sm.tsa.ARIMA(data, model_order).fit(disp=0)
     print("fit model")
-    return model.forecast(steps=steps)[0], end
+    return model.forecast(steps=steps)[0]
 
-def main(data, steps):
-    df = dict_to_dataframe(data)
-    new_results, last_year = predict(df, steps)
-    new_years = [datetime.datetime(year=year,month=1,day=1) for year in range(last_year,last_year+steps)]
-    s = pd.Series()
-    for index,val in enumerate(new_years) :
-        s = s.set_value(val, new_results[index])
-    df = df.append(s)
-    return df
-
-#http://stackoverflow.com/questions/13331518/how-to-add-a-single-item-to-a-pandas-series
-#http://stackoverflow.com/questions/16824607/pandas-appending-a-row-to-a-dataframe-and-specify-its-index-label

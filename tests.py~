@@ -1,0 +1,4 @@
+from inflation_calc import CPI
+from inflation_calc.predict import predict
+cpi = CPI()
+predict(cpi.data["United States"], 5)

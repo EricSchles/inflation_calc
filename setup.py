@@ -9,7 +9,7 @@ with open('README.rst') as readme:
 
 setup(
     name = 'inflation_calc',
-    version = '0.1.2',
+    version = '0.1.1',
     url = 'https://github.com/EricSchles/inflation_calc',
     license = 'GPLv3',
     description = description,
@@ -20,7 +20,6 @@ setup(
         'datapackage',
         'argparse',
         'distribute',
-        'wsgiref',
         'statsmodels',
         'scipy',
         'pandas',

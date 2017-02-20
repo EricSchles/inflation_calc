@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.py
+inflation_calc/__init__.py
+inflation_calc/cpi.py
+inflation_calc/inflation.py
+inflation_calc/predict.py
+inflation_calc.egg-info/PKG-INFO
+inflation_calc.egg-info/SOURCES.txt
+inflation_calc.egg-info/dependency_links.txt
+inflation_calc.egg-info/requires.txt
+inflation_calc.egg-info/top_level.txt
