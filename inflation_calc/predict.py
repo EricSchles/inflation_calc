@@ -7,6 +7,7 @@ from functools import partial
 import code
 from scipy.optimize import brute
 import json
+
 # this comes from here:
 # http://stackoverflow.com/questions/22770352/auto-arima-equivalent-for-python
 def objective_function(data, order):
@@ -103,11 +104,13 @@ def main(data, steps):
     df = dict_to_dataframe(data)
     new_results, last_year = predict(df, steps)
     new_years = [datetime.datetime(year=year,month=1,day=1) for year in range(last_year,last_year+steps)]
-    s = pd.Series()
     for index,val in enumerate(new_years) :
-        s = s.set_value(val, new_results[index])
-    df = df.append(s)
-    return df
+        s = pd.Series()
+        s = s.set_value("cpi", new_results[index])
+        s.name = val
+        df = df.append(s)
+    df.sort_index(inplace=True)
+    return df.to_dict()
 
 #http://stackoverflow.com/questions/13331518/how-to-add-a-single-item-to-a-pandas-series
 #http://stackoverflow.com/questions/16824607/pandas-appending-a-row-to-a-dataframe-and-specify-its-index-label

@@ -7,6 +7,7 @@ from functools import partial
 import code
 from scipy.optimize import brute
 import json
+
 # this comes from here:
 # http://stackoverflow.com/questions/22770352/auto-arima-equivalent-for-python
 def objective_function(data, order):
@@ -78,9 +79,8 @@ def dict_to_dataframe(data):
     df.sort_index(inplace=True)
     return df
 
-def predict(data,steps):
+def predict(df,steps):
     print("started function")
-    df = dict_to_dataframe(data)
     start = df.index[0].year
     end = df.index[-1].year
     years_captured = [idx.year for idx in df.index]
@@ -98,5 +98,19 @@ def predict(data,steps):
     print("found model order")
     model = sm.tsa.ARIMA(data, model_order).fit(disp=0)
     print("fit model")
-    return model.forecast(steps=steps)[0]
+    return model.forecast(steps=steps)[0], end
 
+def main(data, steps):
+    df = dict_to_dataframe(data)
+    new_results, last_year = predict(df, steps)
+    new_years = [datetime.datetime(year=year,month=1,day=1) for year in range(last_year,last_year+steps)]
+    for index,val in enumerate(new_years) :
+        s = pd.Series()
+        s = s.set_value("cpi", new_results[index])
+        s.name = val
+        df = df.append(s)
+    df.sort_index(inplace=True)
+    return df.to_dict()
+
+#http://stackoverflow.com/questions/13331518/how-to-add-a-single-item-to-a-pandas-series
+#http://stackoverflow.com/questions/16824607/pandas-appending-a-row-to-a-dataframe-and-specify-its-index-label

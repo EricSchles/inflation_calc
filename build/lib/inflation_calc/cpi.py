@@ -21,7 +21,7 @@ import collections
 import json
 import requests
 import editdistance
-
+from inflation_calc.predict import main
 
 class CPI(object):
     """
@@ -39,7 +39,8 @@ class CPI(object):
         self.data = {}
         # Load the data into the data structures
         self.load()
-
+        self.into_the_future()
+        
     def load(self):
         """
         Load data with the data from http://data.okfn.org/data/core/cpi/r/cpi.json
@@ -65,6 +66,13 @@ class CPI(object):
         except:
             raise KeyError('Key not found in data')
 
+    def into_the_future(self,steps=10):
+        for key in self.data.keys():
+            try:
+                self.data[key] = main(self.data[key], steps)
+            except:
+                continue
+            
     def closest(self, date=datetime.date.today(), country=None,
                 limit=datetime.timedelta(days=366)):
         """
