@@ -110,7 +110,11 @@ def main(data, steps):
         s.name = val
         df = df.append(s)
     df.sort_index(inplace=True)
-    return df.to_dict()
+    dicter = df.to_dict()["cpi"]
+    new_dict = {}
+    for key in dicter.keys():
+        new_dict[key.year] = dicter[key]
+    return new_dict
 
 #http://stackoverflow.com/questions/13331518/how-to-add-a-single-item-to-a-pandas-series
 #http://stackoverflow.com/questions/16824607/pandas-appending-a-row-to-a-dataframe-and-specify-its-index-label

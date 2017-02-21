@@ -5,7 +5,7 @@ import datetime
 import math
 try:
     cpi = CPI()
-    x= main(cpi.data["United States"], 5)
+    x = cpi.data["United States"]
     import code
     code.interact(local=locals())
 except:

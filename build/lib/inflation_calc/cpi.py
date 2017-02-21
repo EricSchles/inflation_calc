@@ -28,7 +28,7 @@ class CPI(object):
     Provides a Pythonic interface to Consumer Price Index data packages
     """
 
-    def __init__(self):
+    def __init__(self,country="United States"):
         """
         Initialise a CPI instance. Default data package location is the cpi
         data on http://data.okfn.org
@@ -39,7 +39,7 @@ class CPI(object):
         self.data = {}
         # Load the data into the data structures
         self.load()
-        self.into_the_future()
+        self.into_the_future(country=country)
         
     def load(self):
         """
@@ -66,12 +66,15 @@ class CPI(object):
         except:
             raise KeyError('Key not found in data')
 
-    def into_the_future(self,steps=10):
-        for key in self.data.keys():
-            try:
-                self.data[key] = main(self.data[key], steps)
-            except:
-                continue
+    def into_the_future(self,country,steps=10):
+        if country.lower() == "all":
+            for key in self.data.keys():
+                try:
+                    self.data[key] = main(self.data[key], steps)
+                except:
+                    continue
+        else:
+            self.data[country] = main(self.data[country], steps)
             
     def closest(self, date=datetime.date.today(), country=None,
                 limit=datetime.timedelta(days=366)):

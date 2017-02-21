@@ -1,26 +1,32 @@
-economics
+inflation_calc
 =========
 
-**economics** provides a toolkit with economical computations based on
-data from `data.okfn.org <http://data.okfn.org/data>`__.
+**inflation_calc** provides a toolkit with economical computations based on
+data from `data.okfn.org <http://data.okfn.org/data>`__.  This project builds heavily on the work of
+`economics <https://pypi.python.org/pypi/economics>`
 
 Features
 --------
 
 -  CPI
 -  Inflation (based on CPI by default)
-
+-  predict (predicts future cpi's based on current cpi's using ARIMA)
+   
 Requirements
 ------------
 
--  `datapackage <https://pypi.python.org/pypi/datapackage/>`__
-
+-  `statsmodels <https://pypi.python.org/pypi/statsmodels>`__
+-  `scipy <https://pypi.python.org/pypi/scipy>`__
+-  `pandas <https://pypi.python.org/pypi/pandas>`__
+-  `requests <https://pypi.python.org/pypi/requests>`__
+-  `editdistance <https://pypi.python.org/pypi/editdistance>`__
+   
 CPI
 ---
 
 ::
 
-    >> from economics import CPI
+    >> from inflation_calc.cpi import CPI
     >> import datetime
     >>
     >> # Create a new CPI instance
@@ -48,7 +54,7 @@ Inflation
 
 ::
 
-    >> from economics import Inflation
+    >> from inflation_calc.inflation import Inflation
     >> import datetime
     >>
     >> # Create a new Inflation instance

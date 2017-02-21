@@ -1,6 +1,7 @@
 LICENSE
 MANIFEST.in
 README.rst
+setup.cfg
 setup.py
 inflation_calc/__init__.py
 inflation_calc/cpi.py

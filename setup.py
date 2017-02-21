@@ -9,8 +9,9 @@ with open('README.rst') as readme:
 
 setup(
     name = 'inflation_calc',
-    version = '0.1.1',
+    version = '0.2',
     url = 'https://github.com/EricSchles/inflation_calc',
+    download_url = "https://github.com/EricSchles/inflation_calc/tarball/0.2",
     license = 'GPLv3',
     description = description,
     long_description = long_description,
