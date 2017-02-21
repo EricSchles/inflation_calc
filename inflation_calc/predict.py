@@ -14,7 +14,6 @@ def objective_function(data, order):
     return sm.tsa.ARIMA(data, order).fit(disp=0).aic
 
 def brute_search(data):
-    print("got here with no errors")
     obj_func = partial(objective_function, data)
     # Back in graduate school professor Lecun said in class that ARIMA models
     # typically only need a max parameter of 5, so I doubled it just in case.
@@ -22,7 +21,6 @@ def brute_search(data):
     upper_bound_I = 10
     upper_bound_MA = 10
     grid_not_found = True
-    print("got to while loop")
     while grid_not_found:
         try:
             if upper_bound_AR < 0 or upper_bound_I < 0 or upper_bound_MA < 0:
@@ -80,7 +78,6 @@ def dict_to_dataframe(data):
     return df
 
 def predict(df,steps):
-    print("started function")
     start = df.index[0].year
     end = df.index[-1].year
     years_captured = [idx.year for idx in df.index]
@@ -92,12 +89,9 @@ def predict(df,steps):
     s.sort_index(inplace=True)
     s = s.interpolate()
     data = s.to_frame()
-    print("loaded data")
     model_order = brute_search(data)
     model_order = tuple([int(elem) for elem in model_order])
-    print("found model order")
     model = sm.tsa.ARIMA(data, model_order).fit(disp=0)
-    print("fit model")
     return model.forecast(steps=steps)[0], end
 
 def main(data, steps):

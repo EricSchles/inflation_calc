@@ -1,12 +1,12 @@
 Metadata-Version: 1.1
 Name: inflation-calc
-Version: 0.2
+Version: 0.2.1
 Summary: Functions and data manipulation for economics data
 Home-page: https://github.com/EricSchles/inflation_calc
 Author: Eric Schles
 Author-email: ericschles@gmail.com
 License: GPLv3
-Download-URL: https://github.com/EricSchles/inflation_calc/tarball/0.2
+Download-URL: https://github.com/EricSchles/inflation_calc/tarball/0.2.1
 Description: inflation_calc
         =========
         
