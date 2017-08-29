@@ -18,7 +18,7 @@ setup(
     author = 'Eric Schles',
     author_email = 'ericschles@gmail.com',
     install_requires = [
-        'datapackage',
+        'datapackage<1.0',
         'argparse',
         'distribute',
         'statsmodels',
